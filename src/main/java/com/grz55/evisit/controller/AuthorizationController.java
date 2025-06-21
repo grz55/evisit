@@ -1,8 +1,11 @@
 package com.grz55.evisit.controller;
 
+import com.grz55.evisit.dto.AuthResponseDTO;
+import com.grz55.evisit.dto.LoginRequestDTO;
 import com.grz55.evisit.dto.RegisterRequestDTO;
 import com.grz55.evisit.service.AuthorizationService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,5 +21,11 @@ public class AuthorizationController {
   @PostMapping("/register")
   public void register(@RequestBody RegisterRequestDTO request) {
     authService.register(request);
+  }
+
+  @PostMapping("/login")
+  public ResponseEntity<AuthResponseDTO> login(@RequestBody LoginRequestDTO request) {
+    AuthResponseDTO response = authService.authenticateUser(request);
+    return ResponseEntity.ok(response);
   }
 }

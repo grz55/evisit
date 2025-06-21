@@ -18,7 +18,7 @@ class UserRepositoryTest {
     UserEntity user =
         UserEntity.builder()
             .email("test@example.com")
-            .password("encodedPassword")
+            .password("StrongPass123!")
             .firstName("Jan")
             .lastName("Kowalski")
             .role("PATIENT")
